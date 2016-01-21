@@ -6,6 +6,8 @@ var Spooky = require('spooky');
 
 var gGreeting = 'Hello World';
 var counter = 0;
+
+ 
 // adoped from Heroku's [Getting Started][] and [Spooky][]'s sample
 // [Getting Started]: https://devcenter.heroku.com/articles/getting-started-with-nodejs
 // [Spooky]: https://github.com/WaterfallEngineering/SpookyJS
@@ -28,17 +30,24 @@ var spooky = new Spooky({
 		   'http://www.palingram.com/ads-test.html');
 		
 		spooky.then(function () {
-			this.hhh = function(){
-				 this.start(
-					   'http://www.palingram.com/ads-test.html');
+			this.urls = [
+			'http://www.palingram.com/ads-test.html',
+			'https://www.zapchain.com/a/l/when-reddit-finally-decides-to-change-their-give-gold-button-to-tip-bitcoin-button/XtbAZFUxvO'
+			];
+			this.counter = 0;
+            this.urlSize = this.urls.length;
+			this.hhh = function(url){
+				 this.start(url);
 					   this.then(function () {
 					   this.emit('hello', 'Hello, from ' + this.evaluate(function () {
 							return document.title;
 					   }));
-					   this.hhh();
+					   phantom.clearCookies();
+					   this.counter++;
+					   this.hhh(this.urls[this.counter%this.urlSize]);
 				});
 			};
-			this.hhh(); 
+			this.hhh(this.urls[this.counter%this.urlSize]); 
 		});
 		
         spooky.run();
