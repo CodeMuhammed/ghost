@@ -4,6 +4,8 @@ var express = require("express");
 var app = express();
 var Spooky = require('spooky');
 
+var gGreeting = 'Hello World';
+var counter = 0;
 // adoped from Heroku's [Getting Started][] and [Spooky][]'s sample
 // [Getting Started]: https://devcenter.heroku.com/articles/getting-started-with-nodejs
 // [Spooky]: https://github.com/WaterfallEngineering/SpookyJS
@@ -22,18 +24,23 @@ var spooky = new Spooky({
             e.details = err;
             throw e;
         }
-       var ghh = function (){
-        spooky.start(
-           'http://www.palingram.com/ads-test.html');
-        spooky.then(function () {
-            this.emit('hello', 'Hello, from ' + this.evaluate(function () {
-                return document.title;
-            }));
-        });
-		}
-		 
-		 
-	    ghh();
+      spooky.start(
+		   'http://www.palingram.com/ads-test.html');
+		
+		spooky.then(function () {
+			this.hhh = function(){
+				 this.start(
+					   'http://www.palingram.com/ads-test.html');
+					   this.then(function () {
+					   this.emit('hello', 'Hello, from ' + this.evaluate(function () {
+							return document.title;
+					   }));
+					   this.hhh();
+				});
+			};
+			this.hhh(); 
+		});
+		
         spooky.run();
     });
 
@@ -53,10 +60,10 @@ spooky.on('console', function (line) {
     console.log(line);
 });
 */
-var gGreeting = 'Hello World';
 
 spooky.on('hello', function (greeting) {
     console.log(greeting);
+	counter++;
     gGreeting = greeting;
 });
 
@@ -67,9 +74,9 @@ spooky.on('log', function (log) {
 });
 
 
-app.use(express.logger());
+//app.use(express.logger());
 app.get('/', function(request, response) {
-    response.send(gGreeting);
+    response.send(gGreeting+" "+counter+" times");
 });
 
 var port = process.env.PORT || 5000;
