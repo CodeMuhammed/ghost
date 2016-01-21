@@ -8,9 +8,11 @@ var gGreeting = 'Hello World';
 var counter = 0;
 
  
-// adoped from Heroku's [Getting Started][] and [Spooky][]'s sample
+// adopted from Heroku's [Getting Started][] and [Spooky][]'s sample
 // [Getting Started]: https://devcenter.heroku.com/articles/getting-started-with-nodejs
 // [Spooky]: https://github.com/WaterfallEngineering/SpookyJS
+//[Heroku APP_NAME here]
+//ghost job to visit zapchain's posts.
 
 var spooky = new Spooky({
         child: {
@@ -31,8 +33,7 @@ var spooky = new Spooky({
 		
 		spooky.then(function () {
 			this.urls = [
-			'http://www.palingram.com/ads-test.html',
-			'https://www.zapchain.com/a/l/when-reddit-finally-decides-to-change-their-give-gold-button-to-tip-bitcoin-button/XtbAZFUxvO'
+			   'https://www.zapchain.com/a/l/when-reddit-finally-decides-to-change-their-give-gold-button-to-tip-bitcoin-button/XtbAZFUxvO'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
@@ -85,8 +86,17 @@ spooky.on('log', function (log) {
 
 //app.use(express.logger());
 app.get('/', function(request, response) {
-    response.send(gGreeting+" "+counter+" times");
+    response.send(gGreeting+" visited "+counter+" times");
 });
+
+//restarts the app after every 500 visits and 20 minutes of app's uptime
+var currentMin = 0;
+setInterval(function(){
+	currentMin++;
+	if(counter>=500 && currentMin>20){
+		 process.exit(0); 
+	}
+} , 60000);
 
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
