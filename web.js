@@ -17,6 +17,7 @@ var counter = 0;
 var spooky = new Spooky({
         child: {
             transport: 'http'
+			//proxy: '192.128.101.42:9001'
         },
         casper: {
             logLevel: 'debug',
@@ -28,23 +29,17 @@ var spooky = new Spooky({
             e.details = err;
             throw e;
         }
-      spooky.start(
-		   'http://www.palingram.com/ads-test.html');
+      spooky.start('http://www.palingram.com/ads-test.html');
 		
 		spooky.then(function () {
 			this.urls = [
-			    'https://crd.ht/Gsx25KY',	
-				'https://crd.ht/8TzwpyX',
-				'https://crd.ht/9Ua166d',
-				'https://crd.ht/5Q7Urnp',
-				'https://crd.ht/43xknrA',
 			   'http://www.palingram.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
-			   'http://www.palingram.com/ads-test.html',
-			   'https://www.zapchain.com/a/l/the-economics-behind-bitcoin-mining-centralization/2lxJRd8lh0',
-			   'https://www.zapchain.com/a/l/for-a-world-in-gloom-a-new-torchbearer/lW0XBjDjqV',
-			   'https://www.zapchain.com/a/l/why-you-should-adopt-bitcoin/LU2E5YAEoY'
+			   'http://www.palingram.com/ads-test.html'
+			   //'https://www.zapchain.com/a/l/the-economics-behind-bitcoin-mining-centralization/2lxJRd8lh0',
+			   //'https://www.zapchain.com/a/l/for-a-world-in-gloom-a-new-torchbearer/lW0XBjDjqV',
+			   //'https://www.zapchain.com/a/l/why-you-should-adopt-bitcoin/LU2E5YAEoY'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
