@@ -63,7 +63,18 @@ var spooky = new Spooky({
 					   }));
 					   phantom.clearCookies();
 					   this.counter++;
-					   this.hhh(this.urls[this.counter%this.urlSize]);
+					   if(url.indexOf('crd.ht')>-1){
+						   this.click('[value=cr]');
+						   this.then(function(){
+							    this.emit('hello', 'Hello, from ' + this.evaluate(function () {
+									return document.title;
+							   }));
+							   this.hhh(this.urls[this.counter%this.urlSize]);
+						   });
+					   }
+					   else{
+						   this.hhh(this.urls[this.counter%this.urlSize]);
+					   }
 				});
 			};
 			this.hhh(this.urls[this.counter%this.urlSize]); 
