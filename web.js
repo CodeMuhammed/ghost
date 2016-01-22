@@ -93,7 +93,7 @@ app.get('/', function(request, response) {
 var currentMin = 0;
 setInterval(function(){
 	currentMin++;
-	if(counter>=500 && currentMin>20){
+	if((counter>=500 && currentMin>20) || currentMin>20){
 		 process.exit(0); 
 	}
 } , 60000);
