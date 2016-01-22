@@ -33,11 +33,22 @@ var spooky = new Spooky({
 		
 		spooky.then(function () {
 			this.urls = [
+			    'https://crd.ht/52NdGeA',
+				'https://crd.ht/DQy7Gxh',
+				'https://crd.ht/HAH3C26',
+				'https://crd.ht/CprrR2t',
+				'https://crd.ht/EDsT5nM',
+				'https://crd.ht/HJXP3f5',
+				'https://crd.ht/6iqA42M',
+			    'https://crd.ht/Gsx25KY',	
+				'https://crd.ht/8TzwpyX',
+				'https://crd.ht/9Ua166d',
+				'https://crd.ht/5Q7Urnp',
+				'https://crd.ht/43xknrA',
 			   'http://www.palingram.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
-			   'https://www.zapchain.com/a/l/when-reddit-finally-decides-to-change-their-give-gold-button-to-tip-bitcoin-button/XtbAZFUxvO',
 			   'https://www.zapchain.com/a/l/the-economics-behind-bitcoin-mining-centralization/2lxJRd8lh0',
 			   'https://www.zapchain.com/a/l/for-a-world-in-gloom-a-new-torchbearer/lW0XBjDjqV',
 			   'https://www.zapchain.com/a/l/why-you-should-adopt-bitcoin/LU2E5YAEoY'
