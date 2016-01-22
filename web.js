@@ -33,9 +33,30 @@ var spooky = new Spooky({
 		
 		spooky.then(function () {
 			this.urls = [
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
 			   'https://www.zapchain.com/a/l/when-reddit-finally-decides-to-change-their-give-gold-button-to-tip-bitcoin-button/XtbAZFUxvO',
 			   'https://www.zapchain.com/a/l/the-economics-behind-bitcoin-mining-centralization/2lxJRd8lh0',
-			   'https://www.zapchain.com/a/l/for-a-world-in-gloom-a-new-torchbearer/lW0XBjDjqV'
+			   'https://www.zapchain.com/a/l/for-a-world-in-gloom-a-new-torchbearer/lW0XBjDjqV',
+			   'https://www.zapchain.com/a/l/why-you-should-adopt-bitcoin/LU2E5YAEoY'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
