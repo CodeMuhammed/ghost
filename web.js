@@ -33,13 +33,6 @@ var spooky = new Spooky({
 		
 		spooky.then(function () {
 			this.urls = [
-			    'https://crd.ht/52NdGeA',
-				'https://crd.ht/DQy7Gxh',
-				'https://crd.ht/HAH3C26',
-				'https://crd.ht/CprrR2t',
-				'https://crd.ht/EDsT5nM',
-				'https://crd.ht/HJXP3f5',
-				'https://crd.ht/6iqA42M',
 			    'https://crd.ht/Gsx25KY',	
 				'https://crd.ht/8TzwpyX',
 				'https://crd.ht/9Ua166d',
