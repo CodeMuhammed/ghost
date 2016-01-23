@@ -34,7 +34,6 @@ var spooky = new Spooky({
 		spooky.then(function () {
 			this.urls = [
 			   'http://www.palingram.com/ads-test.html',
-			   'http://www.upbunk.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
 			   'https://www.zapchain.com/a/l/the-economics-behind-bitcoin-mining-centralization/2lxJRd8lh0',
 			   
