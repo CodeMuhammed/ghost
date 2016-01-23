@@ -16,7 +16,7 @@ var counter = 0;
 
 var spooky = new Spooky({
         child: {
-            transport: 'http'
+            transport: 'http',
 			//proxy: '192.128.101.42:9001'
         },
         casper: {
@@ -33,33 +33,30 @@ var spooky = new Spooky({
 		
 		spooky.then(function () {
 			this.urls = [
-			   'http://www.palingram.com/ads-test.html',
-			   'http://www.palingram.com/ads-test.html',
-			   'https://www.zapchain.com/a/l/the-economics-behind-bitcoin-mining-centralization/2lxJRd8lh0',
-			   
+			   'http://www.palingram.com/ads-test.html'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
 			this.hhh = function(url){
-				 this.start(url);
-					   this.then(function () {
-					   this.emit('hello', 'Hello, from ' + this.evaluate(function () {
+			this.start(url);
+			   this.then(function () {
+			   this.emit('hello', 'Hello, from ' + this.evaluate(function () {
+					return document.title;
+			   }));
+			   phantom.clearCookies();
+			   this.counter++;
+			   if(url.indexOf('crd.ht')>-1){
+				   this.click('[value=cr]');
+				   this.then(function(){
+						this.emit('hello', 'Hello, from ' + this.evaluate(function () {
 							return document.title;
 					   }));
-					   phantom.clearCookies();
-					   this.counter++;
-					   if(url.indexOf('crd.ht')>-1){
-						   this.click('[value=cr]');
-						   this.then(function(){
-							    this.emit('hello', 'Hello, from ' + this.evaluate(function () {
-									return document.title;
-							   }));
-							   this.hhh(this.urls[this.counter%this.urlSize]);
-						   });
-					   }
-					   else{
-						   this.hhh(this.urls[this.counter%this.urlSize]);
-					   }
+					   this.hhh(this.urls[this.counter%this.urlSize]);
+				   });
+			   }
+			   else{
+				   this.hhh(this.urls[this.counter%this.urlSize]);
+			   }
 				});
 			};
 			this.hhh(this.urls[this.counter%this.urlSize]); 
