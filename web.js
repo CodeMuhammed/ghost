@@ -5,8 +5,8 @@ var app = express();
 var Spooky = require('spooky');
 
 //run ip changing credhot visiting bot
-//var ipful = require('./ipful');
-//ipful.init();
+var ipful = require('./ipful');
+ipful.init();
 
 //run main non ip address changing bot
 var gGreeting = 'Hello World';

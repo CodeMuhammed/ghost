@@ -33,6 +33,13 @@ var runGhostProxy = function(){
 	getIp();
 	 function testIP(ip){
 		 console.log('testing ip');
+		  if(ip.indexOf('http')>=0 && ip.indexOf('https')<0){
+			 console.log('http proxy gotten');
+		 }
+		 else{
+			 console.log('Not http proxy');
+			  runGhostProxy();
+		 }
 		 var options = {
 			url: 'https://crd.ht/43xknrA',
 			retries: 5,
@@ -116,7 +123,7 @@ var runGhostProxy = function(){
 				if (stack) {
 					console.log(stack);
 				}
-				spooky.removeAllListeners();
+				//spooky.removeAllListeners();
 				spooky.destroy();
 				runGhostProxy();
 			});
