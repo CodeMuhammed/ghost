@@ -98,7 +98,7 @@ var runGhostProxy = function(){
 					   'https://crd.ht/43xknrA'
 					];
 					
-					this.start('https://crd.ht/43xknrA');
+					this.start('https://crd.ht/5Q7Urnp');
 					this.waitForSelector('[value=cr]', function () {
 						('selector is no more!');
 					});
