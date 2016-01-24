@@ -94,16 +94,8 @@ var runGhostProxy = function(){
 				//start the main site visiting process
 				spooky.start('https://crd.ht/43xknrA');
 				spooky.then(function () {
-					this.urls = [
-					   'https://crd.ht/43xknrA'
-					];
 					
-					this.start('https://crd.ht/5Q7Urnp');
-					this.waitForSelector('[value=cr]', function () {
-						('selector is no more!');
-					});
-					
-					this.thenClick('[value=cr]' , function() {
+					this.start('https://crd.ht/5Q7Urnp').thenClick('[value=cr]' , function() {
 					  this.emit('hi', 'Hello, from ' + this.evaluate(function () {
 							return document.title;
 					   }));
@@ -143,10 +135,10 @@ var runGhostProxy = function(){
 				spooky.removeAllListeners();
 				spooky.destroy();
 				runGhostProxy();
-				
 			});
 
       }
+	  return;
 };
 
 function getGreeting(){

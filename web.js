@@ -4,9 +4,7 @@ var express = require("express");
 var app = express();
 var Spooky = require('spooky');
 
-//run ip changing credhot visiting bot
-var ipful = require('./ipful');
-ipful.init();
+
 
 //run main non ip address changing bot
 var gGreeting = 'Hello World';
@@ -83,10 +81,13 @@ spooky.on('log', function (log) {
     }
 });
 
+//run ip changing credhot visiting bot
+var ipful = require('./ipful');
+ipful.init();
 
 //app.use(express.logger());
 app.get('/', function(request, response) {
-    response.send(gGreeting+" visited "+counter+" times "+ipful.getGreeting());
+    response.send(gGreeting+" visited "+counter+" times ");
 });
 
 //restarts the app after every 500 visits and 20 minutes of app's uptime
