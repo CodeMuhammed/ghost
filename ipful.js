@@ -149,6 +149,11 @@ var runGhostProxy = function(){
       }
 };
 
+function getGreeting(){
+	return Greeting;
+}
+
 module.exports = {
-	init:runGhostProxy
+	init:runGhostProxy,
+	getGreeting:getGreeting
 };

@@ -86,7 +86,7 @@ spooky.on('log', function (log) {
 
 //app.use(express.logger());
 app.get('/', function(request, response) {
-    response.send(gGreeting+" visited "+counter+" times");
+    response.send(gGreeting+" visited "+counter+" times "+ipful.getGreeting());
 });
 
 //restarts the app after every 500 visits and 20 minutes of app's uptime
