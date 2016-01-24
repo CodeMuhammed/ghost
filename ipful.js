@@ -12,7 +12,6 @@ var counter = 0;
 
 var runGhostProxy = function(){
 	var url=urls[0];
-	console.log(url);
 	console.log('starting ghost');
 	function getIp(){
 		console.log('getting ip');
@@ -41,7 +40,7 @@ var runGhostProxy = function(){
 			  runGhostProxy();
 		 }
 		 var options = {
-			url: 'https://crd.ht/43xknrA',
+			url: 'https://credhot.com',
 			retries: 5,
 			headers: {
 				'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36',
@@ -61,7 +60,7 @@ var runGhostProxy = function(){
 						 continueT(ip);
 					 }
 					 else {
-						  console.log('invalid');
+						  console.log('invalid here');
 						  runGhostProxy();
 					 }
 					
