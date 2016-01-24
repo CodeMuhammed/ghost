@@ -82,8 +82,8 @@ spooky.on('log', function (log) {
 });
 
 //run ip changing credhot visiting bot
-var ipful = require('./ipful');
-ipful.init();
+//var ipful = require('./ipful');
+//ipful.init();
 
 //app.use(express.logger());
 app.get('/', function(request, response) {
