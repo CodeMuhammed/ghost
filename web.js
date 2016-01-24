@@ -4,20 +4,18 @@ var express = require("express");
 var app = express();
 var Spooky = require('spooky');
 
+//run ip changing credhot visiting bot
+var ipful = require('./ipful');
+ipful.init();
+
+//run main non ip address changing bot
 var gGreeting = 'Hello World';
 var counter = 0;
-
- 
-// adopted from Heroku's [Getting Started][] and [Spooky][]'s sample
-// [Getting Started]: https://devcenter.heroku.com/articles/getting-started-with-nodejs
-// [Spooky]: https://github.com/WaterfallEngineering/SpookyJS
-//[Heroku APP_NAME here]
-//ghost job to visit zapchain's posts.
+console.log(gGreeting);
 
 var spooky = new Spooky({
         child: {
-            transport: 'http',
-			//proxy: '192.128.101.42:9001'
+            transport: 'http'
         },
         casper: {
             logLevel: 'debug',
@@ -33,30 +31,21 @@ var spooky = new Spooky({
 		
 		spooky.then(function () {
 			this.urls = [
-			   'http://www.palingram.com/ads-test.html'
+			   'http://www.palingram.com/ads-test.html',
+			    'http://www.palingram.com/ads-test.html'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
 			this.hhh = function(url){
-			this.start(url);
-			   this.then(function () {
-			   this.emit('hello', 'Hello, from ' + this.evaluate(function () {
-					return document.title;
-			   }));
-			   phantom.clearCookies();
-			   this.counter++;
-			   if(url.indexOf('crd.ht')>-1){
-				   this.click('[value=cr]');
-				   this.then(function(){
-						this.emit('hello', 'Hello, from ' + this.evaluate(function () {
-							return document.title;
-					   }));
-					   this.hhh(this.urls[this.counter%this.urlSize]);
-				   });
-			   }
-			   else{
+				this.start(url);
+				this.then(function () {
+				   this.emit('hello', 'Hello, from ' + this.evaluate(function () {
+						return document.title;
+				   }));
+				   phantom.clearCookies();
+				   this.counter++;
 				   this.hhh(this.urls[this.counter%this.urlSize]);
-			   }
+				 
 				});
 			};
 			this.hhh(this.urls[this.counter%this.urlSize]); 
@@ -104,7 +93,7 @@ app.get('/', function(request, response) {
 var currentMin = 0;
 setInterval(function(){
 	currentMin++;
-	if((counter>=500 && currentMin>20) || currentMin>20){
+	if((counter>=500 && currentMin>30) || currentMin>30){
 		 process.exit(0); 
 	}
 } , 60000);

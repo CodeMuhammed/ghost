@@ -1,25 +1,28 @@
 #!/usr/bin/env node
 
-var express = require("express");
-var app = express();
 var request = require('request');
 var curl = require('curlrequest');
 
 urls = [
 	   'https://crd.ht/43xknrA'
-	];
+];
 	
 var Greeting = 'Hello ghost';
 var counter = 0;
 
-var runGhostProxy = function(url){
+var runGhostProxy = function(){
+	var url=urls[0];
+	console.log(url);
 	console.log('starting ghost');
 	function getIp(){
 		console.log('getting ip');
 		request.get( 'http://gimmeproxy.com/api/get/8bb99df808d75d71ee1bdd9e5d/?timeout=1' , function(err , response , body){
 			 if(err){
 				 console.log('Internal server error 1');
-				 runGhostProxy(urls[0]);
+				 setTimeout(function(){
+					  runGhostProxy();
+				 }, 3000);
+				
 			 } 
 			 else {
 				 console.log(JSON.parse(body).curl);
@@ -31,28 +34,28 @@ var runGhostProxy = function(url){
 	 function testIP(ip){
 		 console.log('testing ip');
 		 var options = {
-			url: 'http://icanhazip.com/',
+			url: 'https://crd.ht/43xknrA',
 			retries: 5,
 			headers: {
 				'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36',
 			},
-			timeout: 15,
+			timeout: 18,
 			proxy: ip
 		 };
 		
 		 curl.request(options, function(err, res) {
 			   if(err){
 					 console.log('Internal server error 2');
-					 runGhostProxy(urls[0]);
+					 runGhostProxy();
 				 } 
 				 else {
 					 if(res){
-						 console.log('valid ip');
+						 console.log('test done');
 						 continueT(ip);
 					 }
 					 else {
 						  console.log('invalid');
-						  runGhostProxy(urls[0]);
+						  runGhostProxy();
 					 }
 					
 				 }
@@ -95,7 +98,7 @@ var runGhostProxy = function(url){
 					});
 					
 					this.thenClick('[value=cr]' , function() {
-					  this.emit('hello', 'Hello, from ' + this.evaluate(function () {
+					  this.emit('hi', 'Hello, from ' + this.evaluate(function () {
 							return document.title;
 					   }));
 					   phantom.clearCookies();
@@ -114,7 +117,8 @@ var runGhostProxy = function(url){
 					console.log(stack);
 				}
 				spooky.removeAllListeners();
-				runGhostProxy(runGhostProxy(urls[0]));
+				spooky.destroy();
+				runGhostProxy();
 			});
 
 			/*
@@ -126,34 +130,19 @@ var runGhostProxy = function(url){
 			});
 			*/
 
-			spooky.on('hello', function (greeting) {
+			spooky.on('hi', function (greeting) {
 				console.log(greeting);
 				counter++;
 				Greeting = greeting;
 				spooky.removeAllListeners();
-				runGhostProxy(runGhostProxy(urls[0]));
+				spooky.destroy();
+				runGhostProxy();
 				
 			});
 
       }
-}
-runGhostProxy(urls[0]);
+};
 
-//
-app.get('/', function(request, response) {
-    response.send(gGreeting+" visited "+counter+" times");
-});
-
-//restarts the app after every 500 visits and 20 minutes of app's uptime
-var currentMin = 0;
-setInterval(function(){
-	currentMin++;
-	if(currentMin>20){
-		 process.exit(0); 
-	}
-} , 60000);
-
-var port = process.env.PORT || 5001;
-app.listen(port, function() {
-    console.log("Listening on " + port);
-});
+module.exports = {
+	init:runGhostProxy
+};
