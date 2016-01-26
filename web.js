@@ -73,7 +73,7 @@ var runGhostProxy = function(){
 	 }
 	function continueT(ip){
 	
-		console.log('process starting '+url+' '+ip);
+		console.log('process starting '+' '+ip);
 		var Spooky = require('spooky');
 		var spooky = new Spooky(
 			 {
