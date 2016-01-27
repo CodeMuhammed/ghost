@@ -95,7 +95,7 @@ var runGhostProxy = function(){
 				spooky.then(function () {
 					this.urls = [
 					  'https://crd.ht/5Q7Urnp',
-					  'https://crd.ht/AubKZrd',
+					  /*'https://crd.ht/AubKZrd',
 					  'https://crd.ht/5hpzV51',
 					  'https://crd.ht/52NdGeA',
 					  'https://crd.ht/DQy7Gxh',
@@ -113,7 +113,7 @@ var runGhostProxy = function(){
 					  'https://crd.ht/As5qS5F',
 					  'https://crd.ht/6hSjjMi',
 					  'https://crd.ht/96aJ3bm',
-					  'https://crd.ht/3Jn7y2G'
+					  'https://crd.ht/3Jn7y2G'*/
 					 ];
 					this.count= 0;
 					
@@ -169,7 +169,7 @@ var runGhostProxy = function(){
 
 			spooky.on('hi', function (greeting) {
 				console.log(greeting);
-				counter+=20;
+				counter+=1;
 				Greeting = greeting;
 				spooky.destroy();
 				runGhostProxy();
