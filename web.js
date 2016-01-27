@@ -94,7 +94,6 @@ var runGhostProxy = function(){
 				
 				spooky.then(function () {
 					this.urls = [
-					  'https://crd.ht/5Q7Urnp',
 					  'https://crd.ht/2Q8w1Jc'
 					  /*'https://crd.ht/AubKZrd',
 					  'https://crd.ht/5hpzV51',
