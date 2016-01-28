@@ -30,7 +30,7 @@ var spooky = new Spooky({
 		spooky.then(function () {
 			this.urls = [
 			   'http://www.palingram.com/ads-test.html',
-			    'http://www.palingram.com/ads-test.html'
+			    'http://www.upbunk.com/ads-test.html'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
