@@ -1,198 +1,105 @@
 #!/usr/bin/env node
 
-var spooky = require("spooky");
-var request = require('request');
-var curl = require('curlrequest');
 var express = require("express");
 var app = express();
+var Spooky = require('spooky');
 
-var Greeting = 'Hello ghost'; 
+
+
+//run main non ip address changing bot
+var gGreeting = 'Hello World';
 var counter = 0;
-var visitedIp = [];
+console.log(gGreeting);
 
-var runGhostProxy = function(){ 
-	console.log('starting ghost');
-	function getIp(){
-		console.log('getting ip');
-		request.get('http://gimmeproxy.com/api/get/8bb99df808d75d71ee1bdd9e5d/?timeout=3600' , function(err , response , body){
-			 if(err){
-				 console.log('cannot get ip address');
-				 setTimeout(function(){
-					  runGhostProxy();
-				 }, 3000);
-			 } 
-			 else {
-				 console.log(JSON.parse(body).curl);
-				 testIP(JSON.parse(body).curl);
-			 }
-		 });
-	};
-	getIp();
-	
-	function testIP(ip){
-		 console.log('testing proxy');
-		 
-		 //check if proxy has already been used for this round
-		 if(visitedIp.indexOf(ip)>=0){
-			 console.log('ip already visited');
-			  runGhostProxy();
-		 }
-		 else {
-			 visitedIp.push(ip);
-			 
-			 var options = {
-				url: 'https://credhot.com',
-				retries: 5,
-				headers: {
-					'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36',
-				},
-				timeout: 18,
-				proxy: ip
-			 };
-			
-			 curl.request(options, function(err, res) {
-				   if(err){
-						 console.log('Cannot test proxy');
-						 runGhostProxy();
-					 } 
-					 else {
-						 if(res){
-							 console.log('test done');
-							 //wait an appropriate amount of time before making request
-							  setTimeout(function(){
-								 continueT(ip);
-							 } , 2);
-						 }
-						 else {
-							  console.log('invalid proxy');
-							  runGhostProxy();
-						 }
-						
-					 }
-			 });
-	     }
-	 }
-	 function continueT(ip){
-	
-		console.log('process starting '+ip);
-		var Spooky = require('spooky');
-		var spooky = new Spooky(
-			 {
-				child: {
-					proxy: ip
-				},
-				casper: {
-					logLevel: 'debug',
-					verbose: true
-				}
-			 },
-			 function (err) {
-				if (err) {
-					e = new Error('Failed to initialize SpookyJS');
-					e.details = err;
-					throw e;
-				}
-			   spooky.start('http://www.palingram.com/ads-test.html');
-				
-			   spooky.then(function () {
-					this.urls = [
-					   'http://www.palingram.com/ads-test.html',
-					   'http://www.upbunk.com/ads-test.html'
-					];
-					this.count= 0;
-					
-					this.xpathExpr = "//div[contains(@class,'aa_container')]//div[contains(@class,'row')]//div[contains(@class,'cell')]//a";
-					this.x = function(expression) {
-					  return {
-						type: "xpath",
-						path: expression,
-						toString: function() {
-						  return this.type + " selector: " + this.path;
-						}
-					  };
-					};
-					this.visitAll = function(){
-						
-						this.start(this.urls[this.count%this.urls.length]);
-						this.waitForSelector('a' , function(){
-							this.thenClick('a' , function() {
-									if(this.count==this.urls.length-1){
-										phantom.clearCookies();
-										this.emit('hi', 'Hello, from ' + this.evaluate(function () {
-											return document.title;
-										}));
-									}
-									else{ 
-										 phantom.clearCookies();
-										 this.emit('notify', 'Heyo, we have visited '+this.count+' times');
-										 this.count++;
-										 this.clear();
-										 this.visitAll();
-									} 
-								   
-							});
-						});
-						
-					};
-					this.visitAll();
-						
+var spooky = new Spooky({
+        child: {
+            transport: 'http'
+        },
+        casper: {
+            logLevel: 'debug',
+            verbose: true
+        }
+    }, function (err) {
+        if (err) {
+            e = new Error('Failed to initialize SpookyJS');
+            e.details = err;
+            throw e;
+        }
+       spooky.start('http://www.palingram.com/ads-test.html');
+		
+		spooky.then(function () {
+			this.urls = [
+			   'http://www.palingram.com/ads-test.html',
+			    'http://www.palingram.com/ads-test.html'
+			];
+			this.counter = 0;
+            this.urlSize = this.urls.length;
+			this.hhh = function(url){
+				this.start(url);
+				this.then(function () {
+				   this.emit('hello', 'Hello, from ' + this.evaluate(function () {
+						return document.title;
+				   }));
+				   phantom.clearCookies();
+				   this.counter++;
+				   this.hhh(this.urls[this.counter%this.urlSize]);
+				 
 				});
-				
-				spooky.run();
-			});
-			
-			// logs and listeners
-			spooky.on('error', function (e, stack) {
-				console.log('here');
-				console.error(e);
+			};
+			this.hhh(this.urls[this.counter%this.urlSize]); 
+		});
+		
+        spooky.run();
+    });
 
-				if (stack) {
-					console.log(stack);
-				}
-				//spooky.removeAllListeners();
-				runGhostProxy();
-			});
+spooky.on('error', function (e, stack) {
+    console.error(e);
 
-			/*
-			// Uncomment this block to see all of the things Casper has to say.
-			// There are a lot.
-			// He has opinions.
-			spooky.on('console', function (line) {
-				console.log(line);
-			});
-			*/
+    if (stack) {
+        console.log(stack);
+    }
+});
 
-			spooky.on('hi', function (greeting) {
-				console.log(greeting);
-				counter+=2;
-				Greeting = greeting;
-				runGhostProxy();
-			});
-			
-			spooky.on('notify', function (notify) {
-				console.log(notify);
-			});
-			
-      }
-	  return;
-};
-runGhostProxy();
+/*
+// Uncomment this block to see all of the things Casper has to say.
+// There are a lot.
+// He has opinions.
+spooky.on('console', function (line) {
+    console.log(line);
+});
+*/
+
+spooky.on('hello', function (greeting) {
+    console.log(greeting);
+	counter++;
+    gGreeting = greeting;
+});
+
+spooky.on('log', function (log) {
+    if (log.space === 'remote') {
+        console.log(log.message.replace(/ \- .*/, ''));
+    }
+});
+
+//run ip changing credhot visiting bot
+//var ipful = require('./ipful');
+//ipful.init();
 
 //app.use(express.logger());
 app.get('/', function(request, response) {
-    response.send(Greeting+" visited "+counter+" times ");
+    response.send(gGreeting+" visited "+counter+" times ");
 });
 
 //restarts the app after every 500 visits and 20 minutes of app's uptime
 var currentMin = 0;
 setInterval(function(){
 	currentMin++;
-	if((counter>=500 && currentMin>40) || currentMin>40){
+	if((counter>=500 && currentMin>30) || currentMin>30){
 		 process.exit(0); 
 	}
 } , 60000);
 
-var port = process.env.PORT || 5006;
+var port = process.env.PORT || 5000;
 app.listen(port, function() {
     console.log("Listening on " + port);
 });
