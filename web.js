@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+var request = require('request');
 var express = require("express");
 var app = express();
 var Spooky = require('spooky');
@@ -25,12 +26,13 @@ var spooky = new Spooky({
             e.details = err;
             throw e;
         }
+		console.log('here here');
        spooky.start('http://www.palingram.com/ads-test.html');
 		
 		spooky.then(function () {
 			this.urls = [
 			   'http://www.palingram.com/ads-test.html',
-			    'http://www.palingram.com/ads-test.html'
+			   'http://www.palingram.com/ads-test.html'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
@@ -95,7 +97,15 @@ var currentMin = 0;
 setInterval(function(){
 	currentMin++;
 	if((counter>=500 && currentMin>30) || currentMin>30){
-		 process.exit(0); 
+	 request.get('https://ghostip.herokuapp.com', function(err , response , body){
+			 if(err){
+				process.exit(0); 
+			 } 
+			 else {
+				process.exit(0); 
+			 }
+		 });
+		 
 	}
 } , 60000);
 
