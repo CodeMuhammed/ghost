@@ -44,8 +44,9 @@ var spooky = new Spooky({
 				   }));
 				   phantom.clearCookies();
 				   this.counter++;
-				   this.hhh(this.urls[this.counter%this.urlSize]);
-				 
+				   this.wait(10000 , function(){
+					   this.hhh(this.urls[this.counter%this.urlSize]);
+				   });
 				});
 			};
 			this.hhh(this.urls[this.counter%this.urlSize]); 
