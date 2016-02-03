@@ -34,7 +34,9 @@ var spooky = new Spooky({
 			this.urls = [
 			   'http://www.upbunk.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
-			   'http://fierce-garden-48664.herokuapp.com/ads-test.html'
+			   'http://fierce-garden-48664.herokuapp.com/ads-test.html',
+			   'http://fierce-garden2.herokuapp.com/ads-test.html',
+			   'http://fg1.herokuapp.com/ads-test.html'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
@@ -46,7 +48,7 @@ var spooky = new Spooky({
 				   }));
 				   phantom.clearCookies();
 				   this.counter++;
-				   this.wait(3000 , function(){
+				   this.wait(500 , function(){
 					   this.hhh(this.urls[this.counter%this.urlSize]);
 				   });
 				});
