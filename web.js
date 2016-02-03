@@ -37,7 +37,8 @@ var spooky = new Spooky({
 			   'http://fierce-garden-48664.herokuapp.com/ads-test.html',
 			   'http://fierce-garden2.herokuapp.com/ads-test.html',
 			   'http://fg1.herokuapp.com/ads-test.html',
-			   'http://fg2.herokuapp.com/ads-test.html'
+			   'http://fg2.herokuapp.com/ads-test.html',
+			   'http://fg4.herokuapp.com/ads-test.html'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
