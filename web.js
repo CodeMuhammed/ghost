@@ -40,7 +40,8 @@ var spooky = new Spooky({
 			   'http://fg2.herokuapp.com/ads-test.html',
 			   'http://fg4.herokuapp.com/ads-test.html',
 			   'http://fg6.herokuapp.com/ads-test.html',
-			   'http://fg7.herokuapp.com/ads-test.html'
+			   'http://fg7.herokuapp.com/ads-test.html',
+			   'http://fg8.herokuapp.com/ads-test.html'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
