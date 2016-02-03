@@ -3,6 +3,7 @@
 var request = require('request');
 var express = require("express");
 var app = express();
+var path = require('path');
 var Spooky = require('spooky');
 
 
@@ -32,7 +33,8 @@ var spooky = new Spooky({
 		spooky.then(function () {
 			this.urls = [
 			   'http://www.upbunk.com/ads-test.html',
-			   'http://www.palingram.com/ads-test.html'
+			   'http://www.palingram.com/ads-test.html',
+			   'http://fierce-garden-48664.herokuapp.com/ads-test.html'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
@@ -44,7 +46,7 @@ var spooky = new Spooky({
 				   }));
 				   phantom.clearCookies();
 				   this.counter++;
-				   this.wait(10000 , function(){
+				   this.wait(3000 , function(){
 					   this.hhh(this.urls[this.counter%this.urlSize]);
 				   });
 				});
@@ -92,6 +94,9 @@ spooky.on('log', function (log) {
 app.get('/', function(request, response) {
     response.send(gGreeting+" visited "+counter+" times ");
 });
+
+//
+app.use(express.static(path.join(__dirname , 'public')));
 
 //restarts the app after every 500 visits and 20 minutes of app's uptime
 var currentMin = 0;
