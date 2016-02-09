@@ -53,7 +53,7 @@ var spooky = new Spooky({
 				   }));
 				   phantom.clearCookies();
 				   this.counter++;
-				   this.wait(500 , function(){
+				   this.wait(3600000 , function(){
 					   this.hhh(this.urls[this.counter%this.urlSize]);
 				   });
 				});
