@@ -34,14 +34,14 @@ var spooky = new Spooky({
 			this.urls = [
 			   'http://www.upbunk.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
-			   'http://fierce-garden-48664.herokuapp.com/ads-test.html',
+			   /*'http://fierce-garden-48664.herokuapp.com/ads-test.html',
 			   'http://fierce-garden2.herokuapp.com/ads-test.html',
 			   'http://fg1.herokuapp.com/ads-test.html',
 			   'http://fg2.herokuapp.com/ads-test.html',
 			   'http://fg4.herokuapp.com/ads-test.html',
 			   'http://fg6.herokuapp.com/ads-test.html',
 			   'http://fg7.herokuapp.com/ads-test.html',
-			   'http://fg8.herokuapp.com/ads-test.html'
+			   'http://fg8.herokuapp.com/ads-test.html'*/
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
@@ -53,7 +53,7 @@ var spooky = new Spooky({
 				   }));
 				   phantom.clearCookies();
 				   this.counter++;
-				   this.wait(3600000 , function(){
+				   this.wait(10 , function(){
 					   this.hhh(this.urls[this.counter%this.urlSize]);
 				   });
 				});
