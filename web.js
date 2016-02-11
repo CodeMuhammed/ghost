@@ -35,7 +35,8 @@ var spooky = new Spooky({
 			   'http://www.upbunk.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
 			   'http://adf.ly/1WlnRG',
-			   'http://adfoc.us/3346211'
+			   'http://adfoc.us/3346211',
+			   'http://cur.lv/ur5hp'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
