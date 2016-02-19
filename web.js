@@ -34,7 +34,8 @@ var spooky = new Spooky({
 			this.urls = [
 			   'http://www.upbunk.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
-			   'http://www.derefer.in/cbO'
+			   'http://www.derefer.in/cbO',
+			   'http://ghostip.herokuapp.com'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
