@@ -91,13 +91,15 @@ spooky.on('log', function (log) {
 //var ipful = require('./ipful');
 //ipful.init();
 
-//app.use(express.logger());
-app.get('/', function(request, response) {
-    response.send(gGreeting+" visited "+counter+" times ");
-});
+
 
 //
 app.use(express.static(path.join(__dirname , 'public')));
+
+//app.use(express.logger());
+app.get('/stats', function(request, response) {
+    response.send(gGreeting+" visited "+counter+" times ");
+});
 
 //restarts the app after every 500 visits and 20 minutes of app's uptime
 var currentMin = 0;
