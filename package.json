@@ -4,6 +4,7 @@
   "dependencies": {
     "curlrequest": "^0.5.4",
     "express": "3.1.x",
+    "phantom": "^2.0.2",
     "request": "^2.69.0",
     "spooky": "0.2.x"
   },

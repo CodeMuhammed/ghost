@@ -34,8 +34,27 @@ var spooky = new Spooky({
 			this.urls = [
 			   'http://www.upbunk.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
-			   'http://www.derefer.in/cbO',
-			   'http://ghostip.herokuapp.com'
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://ghostip1.herokuapp.com'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
@@ -102,21 +121,9 @@ app.get('/stats', function(request, response) {
 });
 
 //restarts the app after every 500 visits and 20 minutes of app's uptime
-var currentMin = 0;
-setInterval(function(){
-	currentMin++;
-	if((counter>=500 && currentMin>30) || currentMin>30){
-	 request.get('https://ghostip.herokuapp.com', function(err , response , body){
-			 if(err){
-				process.exit(0); 
-			 } 
-			 else {
-				process.exit(0); 
-			 }
-		 });
-		 
-	}
-} , 120000);
+setTimeout(function(){
+	process.exit(0); 
+} , 60000*60);
 
 var port = process.env.PORT || 5000;
 app.listen(port, function() {
