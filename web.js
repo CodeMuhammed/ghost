@@ -54,7 +54,8 @@ var spooky = new Spooky({
 			   'http://www.palingram.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
-			   'http://ghostip1.herokuapp.com'
+			   'http://ghostip1.herokuapp.com',
+			   'sh.st/WZ4Lh'
 			];
 			this.counter = 0;
             this.urlSize = this.urls.length;
