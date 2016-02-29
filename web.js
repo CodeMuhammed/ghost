@@ -54,6 +54,14 @@ var spooky = new Spooky({
 			   'http://www.palingram.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://www.palingram.com/ads-test.html',
+			   'http://fg20.herokuapp.com',
 			   'http://ghostip1.herokuapp.com',
 			   'sh.st/WZ4Lh'
 			];
