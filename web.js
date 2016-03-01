@@ -34,7 +34,7 @@ var spooky = new Spooky({
 			this.urls = [
 			   'http://www.upbunk.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
-			   'http://fg20.herokuapp.com/home.html',
+			   'http://fg20.herokuapp.com',
 			   'http://ghostip1.herokuapp.com',
 			];
 			this.counter = 0;
