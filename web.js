@@ -35,8 +35,17 @@ var spooky = new Spooky({
 			   'http://www.upbunk.com/ads-test.html',
 			   'http://www.palingram.com/ads-test.html',
 			   'http://fg20.herokuapp.com',
-			   'http://ghostip1.herokuapp.com',
+			   'http://fg20.herokuapp.com',
+			   'http://fg20.herokuapp.com',
+			   'http://fg20.herokuapp.com',
+			   'http://fg20.herokuapp.com',
+			   'http://fg20.herokuapp.com',
+			   'http://fg20.herokuapp.com',
+			   'http://fg20.herokuapp.com',
+			   'http://fg20.herokuapp.com',
+			   'http://fg20.herokuapp.com',
 			];
+			
 			this.counter = 0;
             this.urlSize = this.urls.length;
 			this.hhh = function(url){
@@ -58,45 +67,29 @@ var spooky = new Spooky({
         spooky.run();
     });
 
-spooky.on('error', function (e, stack) {
-    console.error(e);
+	spooky.on('error', function (e, stack) {
+		console.error(e);
 
-    if (stack) {
-        console.log(stack);
-    }
-});
+		if (stack) {
+			console.log(stack);
+		}
+	});
 
-/*
-// Uncomment this block to see all of the things Casper has to say.
-// There are a lot.
-// He has opinions.
-spooky.on('console', function (line) {
-    console.log(line);
-});
-*/
+	spooky.on('hello', function (greeting) {
+		console.log(greeting);
+		counter++;
+		gGreeting = greeting;
+	});
 
-spooky.on('hello', function (greeting) {
-    console.log(greeting);
-	counter++;
-    gGreeting = greeting;
-});
-
-spooky.on('log', function (log) {
-    if (log.space === 'remote') {
-        console.log(log.message.replace(/ \- .*/, ''));
-    }
-});
-
-//run ip changing credhot visiting bot
-//var ipful = require('./ipful');
-//ipful.init();
-
-
+	spooky.on('log', function (log) {
+		if (log.space === 'remote') {
+			console.log(log.message.replace(/ \- .*/, ''));
+		}
+	});
 
 //
 app.use(express.static(path.join(__dirname , 'public')));
 
-//app.use(express.logger());
 app.get('/stats', function(request, response) {
     response.send(gGreeting+" visited "+counter+" times ");
 });
