@@ -43,7 +43,7 @@ var spooky = new Spooky({
 			   'http://fg20.herokuapp.com',
 			   'http://fg20.herokuapp.com',
 			   'http://fg20.herokuapp.com',
-			   'http://fg20.herokuapp.com',
+			   'http://www.linkbucks.com/fk8Y',
 			];
 			
 			this.counter = 0;
