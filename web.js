@@ -13,7 +13,6 @@ var counter = 0;
 var ghostIpUrls = [];
 var urls = [
    'http://www.palingram.com/ads-test.html',
-   /*'http://fg20.herokuapp.com',
    'http://fg20.herokuapp.com',
    'http://fg20.herokuapp.com',
    'http://fg20.herokuapp.com',
@@ -21,7 +20,8 @@ var urls = [
    'http://fg20.herokuapp.com',
    'http://fg20.herokuapp.com',
    'http://fg20.herokuapp.com',
-   'http://fg20.herokuapp.com',*/
+   'http://fg20.herokuapp.com',
+   'http://fg20.herokuapp.com',
    'http://www.linkbucks.com/fk8Y',
 ];
 var runGhostWhite;
@@ -115,14 +115,14 @@ function initSpooky(){
 		}
 		counter++;
 		gGreeting = e;
-		runGhostWhite();
+		initSpooky();
 	});
 
 	spooky.on('hello', function (greeting) {
 		console.log(greeting);
 		counter++;
 		gGreeting = greeting;
-		runGhostWhite();
+        initSpooky();
 	});
 	
 	spooky.on('console', function (line) {
