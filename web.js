@@ -5,7 +5,6 @@ var express = require("express");
 var app = express();
 var path = require('path');
 var Spooky = require('spooky');
-var LineByLineReader = require('line-by-line');
 
 //run main non ip address changing bot
 var gGreeting = 'Hello World';
@@ -25,57 +24,6 @@ var urls = [
    'http://fg20.herokuapp.com',
 ];
 var runGhostWhite;
-
-//
-function pingGhostIp(cb){
-	//
-    console.log('heroku ping here');
-    //Read lines of ip use them to make request before resulting to gimmeproxy
-	ha = new LineByLineReader('ghostipapps.txt');
-	ha.on('error', function (err) {
-		console.log('error while reading file');
-	});
-
-	ha.on('line', function (line) {
-		ghostIpUrls.push(line.toString());
-	});
-
-	ha.on('end', function () {
-	   console.log(ghostIpUrls.length);
-	   
-	   //do pinging
-	   var currentUrl = 0;
-	   function doPing(){
-	       if(currentUrl < ghostIpUrls.length){
-		        request.get(ghostIpUrls[currentUrl] , function(err , response , body){
-					 if(err){
-						 console.log(err);
-						 currentUrl++;					 
-						 doPing();
-					 } 
-					 else {
-					     Greeting = ghostIpUrls[currentUrl]+' test done';
-						 console.log(ghostIpUrls[currentUrl]+' test done'); 
-						 currentUrl++;					 
-						 doPing();
-					 }
-				 });
-		   }
-		   else{
-			  cb();
-		      return;
-		   }  
-	   };
-	   
-	   doPing();
-	});
-};
-//initial pinging of ghostip
-pingGhostIp(function(){
-	console.log('Initial pinging done');
-	Greeting = 'Initial pinging done';
-	initSpooky();
-});
 
 function initSpooky(){
 	var spooky = new Spooky({
@@ -129,6 +77,7 @@ function initSpooky(){
 		console.log(line);
 	});
 }
+initSpooky();
 
 //
 //
@@ -140,10 +89,7 @@ app.get('/stats', function(request, response) {
 
 //restarts the app after every 500 visits and 20 minutes of app's uptime
 setTimeout(function(){
-	//initial pinging of ghostip
-	pingGhostIp(function(){
-		process.exit(0);
-	});
+	process.exit(0);
 } , 60000*60);
 
 var port = process.env.PORT || 5000;
