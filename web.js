@@ -12,8 +12,7 @@ var gGreeting = 'Hello World';
 var counter = 0;
 var ghostIpUrls = [];
 var urls = [
-   'http://www.linkbucks.com/fk8Y',
-   'http://www.allanalpass.com/lm9U',
+   'http://adyou.me/vZdQ',
    'http://www.palingram.com/ads-test.html',
    'http://fg20.herokuapp.com',
    'http://fg20.herokuapp.com',
@@ -24,7 +23,6 @@ var urls = [
    'http://fg20.herokuapp.com',
    'http://fg20.herokuapp.com',
    'http://fg20.herokuapp.com',
-   'http://www.linkbucks.com/fk8Y',
 ];
 var runGhostWhite;
 
