@@ -4,13 +4,14 @@
   "dependencies": {
     "curlrequest": "^0.5.4",
     "express": "3.1.x",
+    "line-by-line": "^0.1.4",
     "phantom": "^2.0.2",
-	"line-by-line": "^0.1.4",
     "request": "^2.69.0",
-    "spooky": "0.2.x"
+    "spooky": "0.2.x",
+    "tiny-jsonrpc": "^2.0.1"
   },
   "engines": {
-    "node": "0.10.x",
-    "npm": "1.3.x"
+    "node": "@latest",
+    "npm": "@latest"
   }
 }
