@@ -35,11 +35,24 @@ function initSpooky(){
 		runGhostWhite = function(){
 			spooky.start(urls[counter%urls.length]);
 			spooky.then(function(){
-				this.wait(30000 , function(){
-					this.emit('hello' , this.evaluate(function () {
-						return document.title;
-				   }));
+				this.viewport(1024, 768, function() {
+					this.echo('new viewport available');
 				});
+			});
+			spooky.then(function(){
+				this.waitForPopup(/www\.$/, function() {
+					this.test.assertEquals(this.popups.length, 1);
+					this.wait(15000 , function(){
+					   this.emit('hello' , this.popups.length+' pop ups found');
+					});
+				} , function(){
+					this.wait(5000 , function(){
+					   this.emit('hello' , this.evaluate(function () {
+							return document.title;
+					   })+' and no pop ups');
+					});
+				} , 20000);
+				
 			});
 		}
         runGhostWhite();
