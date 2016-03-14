@@ -40,18 +40,11 @@ function initSpooky(){
 				});
 			});
 			spooky.then(function(){
-				this.waitForPopup(/www\./, function() {
-					this.test.assertEquals(this.popups.length, 1);
-					this.wait(15000 , function(){
-					   this.emit('hello' , this.popups.length+' pop ups found');
-					});
-				} , function(){
-					this.wait(5000 , function(){
-					   this.emit('hello' , this.evaluate(function () {
-							return document.title;
-					   })+' and no pop ups');
-					});
-				} , 20000);
+				this.wait(5000 , function(){
+				   this.emit('hello' , this.evaluate(function () {
+						return document.title;
+				   })+' and no pop ups');
+				});//
 				
 			});
 		}
