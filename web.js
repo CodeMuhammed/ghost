@@ -11,8 +11,7 @@ var gGreeting = 'Hello World';
 var counter = 0;
 var ghostIpUrls = [];
 var urls = [
-   'http://www.palingram.com/ads-test.html',
-   'http://fg20.herokuapp.com/',//
+   'http://fg20.herokuapp.com/',
 ];
 var runGhostWhite;
 
