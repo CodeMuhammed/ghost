@@ -11,7 +11,6 @@ var gGreeting = 'Hello World';
 var counter = 0;
 var ghostIpUrls = [];
 var urls = [
-   'http://fg20.herokuapp.com/',
    'http://ghostip10.herokuapp.com'
 ];
 var runGhostWhite;
