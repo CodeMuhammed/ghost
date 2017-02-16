@@ -11,7 +11,7 @@ var gGreeting = 'Hello World';
 var counter = 0;
 var ghostIpUrls = [];
 var urls = [
-   'http://ghostip10.herokuapp.com'
+   'http://google.com'
 ];
 var runGhostWhite;
 
