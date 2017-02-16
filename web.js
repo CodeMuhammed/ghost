@@ -73,7 +73,7 @@ function initSpooky(){
 		console.log(line);
 	});
 }
-initSpooky();
+//initSpooky();
 
 //
 //
